@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    button{
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        border: none;
+        background-color: rgb(92, 88, 88);
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 10px;
+    }
+    button:hover{
+        background-color: rgb(61, 56, 56); 
+    }
+    button:active{
+        background-color: rgb(46, 33, 33);  
+    }
+    .keys{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        padding: 12px;
+        margin: 12px;
+        
+    }
+    .calculator{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: hsl(0, 19%, 6%);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    #display{
+        width: 100%;
+        padding: 20px;
+        font-size: 5rem;
+        text-align: left;
+        border: none;
+        background-color: hsl(0, 8%, 28%);
+        color: white;
+    }
+    .oprt-btn{
+        background-color: rgb(230, 197, 11);
+    }
+    .oprt-btn:hover{
+        background-color: rgb(197, 184, 6);
+    }
+    .oprt-btn:active{
+        background-color: orange;
+    }
+</style>
+<body>
+    <div class="calculator">
+        <input id="display" readonly>
+        <div class="keys">
+            <button onclick="appendTodisplay('+')" class="oprt-btn">+</button>
+            <button onclick="appendTodisplay('7')">7</button>
+            <button onclick="appendTodisplay('8')">8</button>
+            <button onclick="appendTodisplay('9')">9</button>
+            <button onclick="appendTodisplay('-')" class="oprt-btn">-</button>
+            <button onclick="appendTodisplay('4')">4</button>
+            <button onclick="appendTodisplay('5')">5</button>
+            <button onclick="appendTodisplay('6')">6</button>
+            <button onclick="appendTodisplay('*')" class="oprt-btn">*</button>
+            <button onclick="appendTodisplay('1')">1</button>
+            <button onclick="appendTodisplay('2')">2</button>
+            <button onclick="appendTodisplay('3')">3</button>
+            <button onclick="appendTodisplay('/')" class="oprt-btn">/</button>
+            <button onclick="appendTodisplay('0')">0</button>
+            <button onclick="appendTodisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearscr()" class="oprt-btn">AC</button>
+
+        </div>
+    </div>
+    <script>
+        const display=document.getElementById('display');
+        function appendTodisplay(input){
+            display.value+=input;
+        }
+
+        function clearscr()
+        {
+            display.value="";
+        }
+
+        function calculate(){
+            try{
+                display.value=eval(display.value);
+            }
+            catch(error)
+            {
+                display.value="Error";
+            }
+        }
+    </script>
+</body>
+</html>
